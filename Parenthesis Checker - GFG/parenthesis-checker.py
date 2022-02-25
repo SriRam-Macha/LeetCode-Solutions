@@ -7,7 +7,7 @@ class Solution:
     def ispar(self,x):
         arr = []
         for i in x:
-            if i in ["(","{","["]:
+            if i == "(" or i == "{" or i == "[":
                 arr.append(i)
             else:
                 if not arr:
@@ -22,8 +22,7 @@ class Solution:
                 if i == "]":
                     if current != "[":
                         return False
-        
-        
+                        
         if arr:
             return False
         return True
