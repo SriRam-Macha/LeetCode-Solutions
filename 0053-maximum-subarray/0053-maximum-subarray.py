@@ -1,10 +1,15 @@
 class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        max_current = max_global = nums[0]
-
-        for i in range(1, len(nums)):
-            max_current = max(nums[i], max_current + nums[i])
-            if max_current > max_global:
-                max_global = max_current
-
-        return max_global
+    def maxSubArray(self, arr: List[int]) -> int:
+        maxcurr = arr[0]
+        maxglob = arr[0]
+        
+        for i in range(1,len(arr)):
+            if arr[i] < maxcurr + arr[i]:
+                maxcurr = maxcurr + arr[i]
+            else:
+                maxcurr = arr[i]
+                
+            if maxcurr > maxglob:
+                maxglob = maxcurr
+        
+        return maxglob
