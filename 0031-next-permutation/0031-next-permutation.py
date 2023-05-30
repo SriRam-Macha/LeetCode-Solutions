@@ -13,8 +13,11 @@ class Solution:
         if pivot == -1: 
             nums.reverse()
         else:
-            changer = len(nums) - 1
-            while changer > pivot and nums[changer] <= nums[pivot]:
-                changer -= 1
+            changer = -1
+            for i in range(len(nums) - 1, pivot , -1):
+                if nums[i] > nums[pivot]:
+                    changer = i
+                    break
+                    
             nums[pivot],nums[changer] = nums[changer] , nums[pivot]
             nums[pivot+1:] = nums[pivot+1:][::-1]
