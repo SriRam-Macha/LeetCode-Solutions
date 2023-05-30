@@ -1,13 +1,17 @@
-class Solution:
-    def generate(self, N: int) -> List[List[int]]:
-        ans = [[1]]
-        for _ in range(1,N):
-            pre = 1
-            currlist = [1]
-            for i in range(1,_+1):
-                curr = (pre * (_ - i + 1))/i
-                currlist.append(int(curr))
-                pre = curr
-            ans.append(currlist)
-        return ans
-            
+class Solution(object):
+    def generate(self, N):
+        output = []
+        for i in range(N):
+            if(i == 0):
+                prev = [1]
+                output.append(prev)
+            else:
+                curr = [1]
+                j = 1
+                while(j < i):
+                    curr.append(prev[j-1] + prev[j])
+                    j+=1
+                curr.append(1)
+                output.append(curr)
+                prev = curr
+        return output
